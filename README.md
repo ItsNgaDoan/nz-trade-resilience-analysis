@@ -10,14 +10,17 @@ The analysis covers **5 years (2019–2023)** and **150+ global trade partners**
 
 To understand how trade operates between New Zealand and its international partners, this project focuses on the **demand side of trade** — specifically, **who New Zealand relies on for imports**.
 
-Data was collected from:
-- World Trade Organization (WTO)  
-- World Bank  
-- Observatory of Economic Complexity (OEC)  
+The analysis was built on a core international trade dataset, which was enriched by integrating additional external datasets to provide broader context.
+
+Data sources include:
+- International trade data (WTO, OEC)  
+- GDP per capita (World Bank)  
+- Political stability index (World Bank)  
+- Geographic distance data (CEPII)    
 
 We analyzed trade relationships using four key metrics:
 
-- **Global Export Value** – proxy for a country’s global trade influence  
+- **Global Export Value** – proxy for global trade influence  
 - **NZ Import Share (%)** – level of dependency on each partner  
 - **GDP per Capita** – economic strength and development level  
 - **Political Stability & Distance** – contextual factors affecting trade reliability  
@@ -29,9 +32,20 @@ This was performed **year by year**, allowing us to track how trade relationship
 
 ## Key Findings  
 
-### 1. Trade partners can be segmented into distinct groups  
+### 1. New Zealand is highly dependent on a small group  
 
-Across 150+ countries, trade relationships were grouped into **four clusters** based on shared characteristics:
+- Over **80% of imports consistently come from a small set of partners**  
+- Key imports include machinery, transport, fuel, and chemicals  
+
+While many of these partners are supported by **Free Trade Agreements**, this concentration introduces **systemic risk**:
+- Policy changes  
+- Supply chain disruptions  
+- Geopolitical or environmental shocks  
+
+
+### 2. Trade relationships can be segmented into four distinct groups  
+
+Using clustering, 150+ countries were grouped based on shared trade characteristics:
 
 - **Primary Partners**  
   High import share, strong economies, and stable — e.g., China, Australia, USA  
@@ -40,29 +54,18 @@ Across 150+ countries, trade relationships were grouped into **four clusters** b
   Growing economies with increasing trade potential — e.g., Vietnam, Indonesia  
 
 - **Low Impact Partners**  
-  Minimal contribution to NZ imports, currently low influence  
+  Minimal contribution to NZ imports  
 
 - **Niche Partners**  
-  Smaller or specialised relationships (often regional or aid-based)  
+  Smaller or specialised relationships (regional or aid-based)  
 
-This segmentation provides a structured way to understand **trade dependency and opportunity**.
-
-
-### 2. New Zealand is highly dependent on a small group  
-
-- Over **80% of imports consistently come from Primary partners**  
-- Key imports include machinery, transport, fuel, and chemicals  
-
-While many of these partners are supported by **Free Trade Agreements**, this level of concentration introduces **systemic risk**:
-- Policy changes  
-- Supply chain disruptions  
-- Geopolitical or environmental shocks  
+This segmentation provides a **data-driven framework** to understand both **dependency and diversification opportunities**.
 
 
 ### 3. Trade relationships are dynamic, not fixed  
 
 - Countries **move between clusters over time**  
-- More than **10 countries shifted groups between 2019–2023**  
+- More than **10 countries shifted groups (2019–2023)**  
 - Emerging partners show increasing stability and trade relevance  
 
 This indicates that:
@@ -71,65 +74,78 @@ This indicates that:
 
 ### 4. COVID-19 reshaped trade patterns  
 
-- The **Niche group emerged during disruption periods**, separating from Low Impact  
-- By **2023, patterns begin stabilising again**  
+- The **Niche group separated from Low Impact during disruption periods**  
+- By **2023, trade structures begin stabilising again**  
 
-This suggests a **window of opportunity** to rethink trade strategy before patterns fully lock in.
+This suggests a **critical window to rethink trade strategy** before patterns fully lock in.
 
 
 ## Strategy Implications  
 
-### 1. Diversification is no longer optional  
+### Diversify to reduce systemic risk  
+Heavy reliance on a small group of partners creates structural vulnerability.  
+A more diversified import base is essential for long-term resilience.
 
-Heavy reliance on a few partners creates vulnerability.  
-New Zealand should actively **diversify its import base** to reduce systemic risk.
 
-
-### 2. Emerging partners are the key opportunity  
-
+### Prioritise high-potential Emerging partners  
 Countries such as:
 - Vietnam  
 - Indonesia  
 - Philippines  
 
-Already have:
-- Trade agreements (ASEAN, EU–NZ)  
+Offer strong opportunities due to:
+- Existing trade agreements (ASEAN, EU–NZ)  
 - Improving political stability  
-- Competitive geographic positioning  
-
-These markets represent **scalable and realistic alternatives**.
+- Strategic geographic positioning  
 
 
-### 3. Data-driven clustering supports strategic planning  
-
-Segmenting trade partners provides a **decision framework** for:
+### Use clustering as a decision framework  
+Trade partner segmentation can support:
 - Trade prioritisation  
 - Policy negotiation  
-- Supply chain resilience planning  
+- Supply chain planning  
 
 
-## Screenshots  
+## Data Model  
 
-### Report Overview  
+![Model View](./screenshots/model-view.png)
+
+The data model integrates multiple datasets across **country and year dimensions**, enabling a unified analysis of New Zealand’s trade system.
+
+A central fact table (`Trade_Data`) captures:
+- Export value  
+- Import value  
+- NZ import share  
+
+This table is connected via **Country_Code and Country_Year** to:
+
+- GDP per capita (economic context)  
+- Political stability (risk factors)  
+- Distance to New Zealand (logistics constraints)  
+
+Clustering outputs generated in R were re-integrated into Power BI, enabling **dynamic segmentation and time-based analysis**.
+
+
+## Dashboard Preview  
+
 ![Cover](./screenshots/cover.png)
 
-### Data Preparation & Export  
-![Data](./screenshots/data-use-import-to-r.png)
+![Summary](./screenshots/summary.png)
 
-### Trade Clusters (Global View)  
 ![Clusters](./screenshots/global-trade-clusters.png)
 
-### Trade Group Trends  
 ![Trends](./screenshots/trade-group-trends-and-transitions.png)
 
-### Trade Group Characteristics  
-![Characteristics](./screenshots/trade-cluster-characteristic.png)
+![Characteristics](./screenshots/trade-cluster-characteristics.png)
 
-### Data Model  
-![Model](./screenshots/model-view.png)
-
-### Conclusion  
 ![Conclusion](./screenshots/conclusion.png)
+
+
+## Tools and Technologies  
+
+- Power BI (Data modelling, DAX, dashboard design)  
+- R (Clustering, PCA, anomaly detection)  
+- Excel / CSV (data preparation)  
 
 
 ## Important Note  
@@ -143,19 +159,12 @@ To explore the full interactive report, download the `.pbix` file below:
 
 ## My Role and Contribution  
 
-- Designed and developed the **full Power BI dashboard**, including layout, visuals, and storytelling  
+- Designed and developed the **full Power BI dashboard** (layout, visuals, storytelling)  
 - Performed **data transformation and preparation** across multiple datasets  
-- Conducted **Exploratory Data Analysis (EDA)** to identify key patterns and relationships  
-- Built the **data model in Power BI**, integrating multiple data sources into a structured schema  
-- Implemented **DAX measures** for key metrics and analytical calculations  
-- Performed **data analysis in R**, including:
+- Conducted **Exploratory Data Analysis (EDA)**  
+- Built the **data model in Power BI**  
+- Implemented **DAX measures** for key metrics  
+- Performed **machine learning analysis in R**:
   - Clustering (k-means)  
-  - Principal Component Analysis (PCA)  
+  - PCA  
   - Anomaly detection  
-
-
-## Tools and Technologies  
-
-- Power BI (Data modelling, DAX, dashboard design)  
-- R (Clustering, PCA, data analysis)  
-- Excel / CSV (data preparation)  
