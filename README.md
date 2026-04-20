@@ -168,3 +168,9 @@ To explore the full interactive report, download the `.pbix` file below:
   - Clustering (k-means)  
   - PCA  
   - Anomaly detection  
+
+
+## Academic Use Notice
+
+This project was completed as part of a group assignment at the University of Auckland and is shared for educational and portfolio purposes only.
+The work presented reflects collaborative academic effort. Unauthorised use, reproduction, or redistribution may violate academic integrity policies.
